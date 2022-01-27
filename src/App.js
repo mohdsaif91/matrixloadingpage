@@ -1,11 +1,36 @@
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import MedicensImage from "./assets/medical.png";
 import { data } from "./util/data";
 
+const initialSearch = {
+  show: false,
+  text: "",
+};
+
 function App() {
-  const [search, setSearch] = useState(false);
+  const [search, setSearch] = useState({ ...initialSearch });
   const [medicen] = useState([...data]);
+  const [filter, setFilter] = useState([...data]);
+
+  const resetSearch = (e) => {
+    e.preventDefault();
+    setSearch({ ...search, text: "" });
+  };
+
+  const searchProduct = (e) => {
+    const filteredProduct = medicen.filter((f) =>
+      f.name.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
+    );
+    setFilter([...filteredProduct]);
+    console.log(filteredProduct, "<>?");
+    setSearch({ ...search, text: e.target.value });
+  };
+
+  const lossFocus = () => {
+    setSearch({ ...initialSearch });
+    setFilter([...data]);
+  };
 
   return (
     <div className="App">
@@ -15,15 +40,15 @@ function App() {
             <div className="contact">
               <div className="country-text">USA</div>
               <div className="number-container">
-                <a href="tel:+917869961901">call +1 888 6821109</a>
-                <a href="tel:+917869961901">text +1 678 7223433</a>
+                <a href="tel:+18886821109">call +1 888 6821109</a>
+                <a href="tel:+16787223433">text +1 678 7223433</a>
               </div>
             </div>
             <div className="contact">
               <div className="country-text">Austrila</div>
               <div className="number-container">
-                <a href="tel:+917869961901">call +61 272 021 899</a>
-                <a href="tel:+917869961901">text +61 437 070 227</a>
+                <a href="tel:+61272021899">call +61 272 021 899</a>
+                <a href="tel:+61437070227">text +61 437 070 227</a>
               </div>
             </div>
           </div>
@@ -32,28 +57,8 @@ function App() {
           <div className="row v-center">
             <div className="header-item item-left">
               <div className="logo">
-                <a href="#">Matrix Pharmacy</a>
+                <a href="/#">Matrix Pharmacy</a>
               </div>
-              <div className="search-bar">
-                <div className="search-input">
-                  <input type="text" placeholder="Search For Product" />
-                  <a href="#" className="search-cancel">
-                    <i className="fas fa-times"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="header-item item-center">
-              <div className="menu-overlay"></div>
-              <nav className="menu">
-                <div className="mobile-menu-head">
-                  <div className="go-back">
-                    <i className="fas fa-angle-left"></i>
-                  </div>
-                  <div className="current-menu-title"></div>
-                  <div className="mobile-menu-close">&times;</div>
-                </div>
-              </nav>
             </div>
           </div>
         </div>
@@ -69,12 +74,12 @@ function App() {
                   We are runnig promotions prices are low like never before
                 </span>
                 <strong>
-                  $0.50 cents per Pill/Tablet/Capsule
+                  80% off on any Pill/Tablet/Doses
                   <br />
                 </strong>
               </div>
               <div className="img-container">
-                <img className="medical-image" src={MedicensImage} />
+                <img alt="" className="medical-image" src={MedicensImage} />
               </div>
             </div>
           </div>
@@ -84,10 +89,42 @@ function App() {
       <section className="product-list">
         <div className="container">
           <h2 className="product-title">Featured Products</h2>
+          <div className="search-container">
+            {search.show ? (
+              <div className="search-bar">
+                <div className="search-input">
+                  <input
+                    value={search.text}
+                    onChange={(e) => searchProduct(e)}
+                    type="text"
+                    onBlur={() => lossFocus()}
+                    placeholder="Search For Product"
+                  />
+                  <a href="/#" className="search-cancel">
+                    <i
+                      className="fas fa-times"
+                      onClick={(e) => resetSearch(e)}
+                    ></i>
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <div
+                className="icon-container"
+                onClick={() => {
+                  setSearch({ ...search, show: !search.show });
+                }}
+              >
+                <i className="fa fa-search search-icon" aria-hidden="true" />
+                <div className="icon-text">Click to search</div>
+              </div>
+            )}
+          </div>
+
           <div className="row">
             <div className="item">
               <div className="product">
-                {medicen.map((m) => (
+                {filter.map((m) => (
                   <div ley={m.id} className="product-container">
                     <div className="product-thumb">
                       <img src={m.imageName} alt="" className="pro-thumb-img" />
@@ -109,15 +146,15 @@ function App() {
             <div className="contact">
               <div className="country-text">USA</div>
               <div className="number-container">
-                <a href="tel:+917869961901">call +1 888 6821109</a>
-                <a href="tel:+917869961901">text +1 678 7223433</a>
+                <a href="tel:+18886821109">call +1 888 6821109</a>
+                <a href="tel:+16787223433">text +1 678 7223433</a>
               </div>
             </div>
             <div className="contact">
               <div className="country-text">Austrila</div>
               <div className="number-container">
-                <a href="tel:+917869961901">call +61 272 021 899</a>
-                <a href="tel:+917869961901">text +61 437 070 227</a>
+                <a href="tel:+61272021899">call +61 272 021 899</a>
+                <a href="tel:+61437070227">text +61 437 070 227</a>
               </div>
             </div>
           </div>
