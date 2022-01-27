@@ -74,7 +74,7 @@ function App() {
                   We are runnig promotions prices are low like never before
                 </span>
                 <strong>
-                  80% off on any Pill/Tablet/Doses
+                  80% off on any Pill/Tablet/Dosages
                   <br />
                 </strong>
               </div>
@@ -116,7 +116,7 @@ function App() {
                 }}
               >
                 <i className="fa fa-search search-icon" aria-hidden="true" />
-                <div className="icon-text">Click to search</div>
+                <div className="icon-text">Click here to search</div>
               </div>
             )}
           </div>
