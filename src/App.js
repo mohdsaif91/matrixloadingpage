@@ -125,7 +125,7 @@ function App() {
             <div className="item">
               <div className="product">
                 {filter.map((m) => (
-                  <div ley={m.id} className="product-container">
+                  <div key={m.id} className="product-container">
                     <div className="product-thumb">
                       <img src={m.imageName} alt="" className="pro-thumb-img" />
                     </div>

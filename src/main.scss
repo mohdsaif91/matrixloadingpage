@@ -1014,13 +1014,71 @@ main {
   width: 100%;
 }
 
-@media screen and (min-width: 300px) and (max-width: 500px) {
+@media screen and (min-width: 300px) and (max-width: 329px) {
   .product-list .item .product {
     display: flex;
     flex-direction: column;
   }
   .f-slide-1 h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+  .f-slider-text {
+    align-items: center;
+    text-align: center;
+  }
+  .f-slider-text strong {
+    font-size: 1.5rem !important;
+  }
+  .slider-text-container {
+    flex-direction: column-reverse;
+    .img-container {
+      margin: 32px 0;
+    }
+  }
+  .phone {
+    margin: 0 !important;
+    flex-direction: row;
+    justify-content: space-between;
+    .contact .country-text {
+      font-size: 12px;
+    }
+    a {
+      margin-bottom: 10px;
+      font-size: 12px !important;
+      font-weight: 600;
+    }
+    .contact {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  .hero {
+    height: 50vw;
+  }
+  .bar {
+    height: 26vw;
+    top: 10vw;
+  }
+  .hero h1 {
+    font-size: 8vw;
+    top: 13vw;
+  }
+  .hero p {
+    font-size: 3vw;
+    top: 27vw;
+  }
+}
+
+@media screen and (min-width: 330px) and (max-width: 500px) {
+  .product-list .item .product {
+    display: flex;
+    flex-direction: column;
+  }
+  .f-slider-text strong {
+    font-size: 1.8rem !important;
+  }
+  .f-slide-1 h1 {
+    font-size: 2rem;
   }
   .f-slider-text {
     align-items: center;
