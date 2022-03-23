@@ -85,3 +85,8 @@ export const data = [
   { id: 23, name: "Viagra 150 mg", imageName: cenforce150 },
   { id: 24, name: "Viagra 200 mg", imageName: cenforce200 },
 ];
+
+export const numberValidation = (value) => {
+  const regex = /^[0-9]*$/;
+  return regex.test(value);
+};

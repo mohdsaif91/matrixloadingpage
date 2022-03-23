@@ -1,0 +1,138 @@
+.admin-home {
+  margin-top: 32px;
+  .tab-link {
+    margin-left: 32px;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.customer-order {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-top: 1px solid #333;
+  margin: 32px;
+  padding: 32px 8px;
+  .order-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .changes-conatiner {
+      border: 2px solid #333;
+      padding: 16px;
+      border-radius: 8px;
+    }
+    .form-item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 16px;
+      .input-label {
+        margin-bottom: 8px;
+      }
+      .input-item {
+        background-color: rgb(149, 151, 151);
+        border-radius: 8px;
+        padding: 12px 8px;
+        font-size: 18px;
+      }
+      .medicen-container {
+        margin: 32px 0;
+        display: flex;
+        justify-content: space-between;
+        .operation-container {
+          display: flex;
+        }
+
+        .quantity-input {
+          text-align: center;
+          width: 10%;
+          margin-right: 16px;
+        }
+        .btn {
+          border-radius: 34px;
+          border: none;
+          padding: 0 !important;
+          img {
+            height: 50px;
+          }
+        }
+        .add-medicen {
+          cursor: pointer;
+          border-radius: 8px;
+          padding: 16px 24px;
+          background-color: rgb(69, 69, 250);
+          color: #ffffff;
+          border: none;
+        }
+      }
+    }
+  }
+  .added-medicen-list {
+    .add-btn-container {
+      display: flex;
+      justify-content: end;
+      margin-bottom: 32px;
+    }
+    .ul-list {
+      width: 100%;
+      height: 300px;
+      overflow-y: auto;
+      list-style: none;
+      background-color: #838282;
+      border-radius: 8px;
+      .list-li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 4px;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ffffff;
+        .med-name,
+        .med-quantity {
+          padding: 16px;
+          font-size: 22px;
+          margin-right: 32px;
+        }
+        .remove-medicen {
+          border: none;
+          padding: 8px 12px;
+          border-radius: 8px;
+          margin-right: 8px;
+          cursor: pointer;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+.none {
+  display: none !important;
+}
+
+.block {
+  display: block !important;
+}
+.disabled {
+  opacity: 0.7;
+  cursor: not-allowed !important;
+}
+
+.danger {
+  background-color: red;
+  color: #ffffff;
+}
+
+.primary {
+  background-color: green;
+  color: #ffffff;
+}
+
+.link {
+  font-weight: 600;
+  margin-right: 16px;
+  border-radius: 8px;
+  padding: 16px 24px;
+  cursor: pointer;
+}
