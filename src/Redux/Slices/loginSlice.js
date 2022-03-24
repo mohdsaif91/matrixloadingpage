@@ -11,12 +11,12 @@ export const loginUserFun = createAsyncThunk(
       .then((res) => {
         dispatch(stopLoading());
         if (res.status === 200) {
-          fulfillWithValue(res.data);
+          return fulfillWithValue(res.data);
         }
       })
       .catch((err) => {
         dispatch(stopLoading());
-        return rejectWithValue(err.response.message);
+        return rejectWithValue(err.response);
       });
   }
 );

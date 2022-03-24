@@ -24,10 +24,13 @@ $animation-time: 4s;
 
 @import "./SCSS/login";
 @import "./SCSS/loading";
+@import "./SCSS/order-display";
+@import "./SCSS/modal";
 
 // admin
 @import "./SCSS/admin/adminHeader";
 @import "./SCSS/admin/adminHome";
+@import "./SCSS/admin/orderTable";
 
 .extra-space {
   height: 70px;
@@ -1164,4 +1167,8 @@ main {
   .product-list .product .product-info {
     margin-top: 10px;
   }
+}
+
+.mt-2 {
+  margin-top: 16px;
 }

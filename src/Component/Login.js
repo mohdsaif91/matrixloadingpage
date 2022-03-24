@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { loginUserFun, signupUserFun } from "../Redux/Slices/loginSlice";
+import { loginUserFun } from "../Redux/Slices/loginSlice";
 
 const initialCred = {
   userName: "",
@@ -24,7 +24,6 @@ function Login() {
         <div className="form__field">
           <input
             onChange={(e) => setCred({ ...cred, userName: e.target.value })}
-            autocomplete="username"
             id="login__username"
             type="text"
             name="userName"

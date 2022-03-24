@@ -23,7 +23,6 @@ function PromotionPage() {
       f.name.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())
     );
     setFilter([...filteredProduct]);
-    console.log(filteredProduct, "<>?");
     setSearch({ ...search, text: e.target.value });
   };
 
@@ -31,7 +30,6 @@ function PromotionPage() {
     setSearch({ ...initialSearch });
     setFilter([...data]);
   };
-  console.log("aa kar gaya");
   return (
     <div>
       <ul id="#adaptive" className="cs-hidden">

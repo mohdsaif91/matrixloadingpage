@@ -1,0 +1,49 @@
+.modal-popup {
+  position: absolute;
+  width: 500px;
+  top: 20%;
+  left: 35%;
+  background-color: #ced2d2;
+  border-radius: 10px;
+
+  .modal-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 24px;
+    .modal-heading {
+      padding: 8px 16px;
+    }
+    .x-close {
+      font-size: 22px;
+      padding: 8px 16px;
+      font-weight: 600;
+      color: red;
+      cursor: pointer;
+    }
+    border-bottom: 1px solid #333;
+  }
+  .modal-body {
+    font-size: 20px;
+    padding: 12px;
+    .list-medicen {
+      margin-top: 16px;
+      .item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        border-bottom: 1px solid #333;
+        padding: 8px 0;
+      }
+    }
+  }
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px;
+    .ok-btn {
+      border: none;
+      background-color: rgb(20, 224, 214);
+    }
+  }
+}

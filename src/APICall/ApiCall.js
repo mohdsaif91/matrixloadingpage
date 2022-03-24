@@ -8,10 +8,10 @@ export const apiMethod = async (payload) => {
     baseURL: url,
   });
 
-  return await axios(payload.url, {
+  const res = await axios(payload.url, {
     method: payload.method,
     data: payload.data,
-  })
-    .then((res) => res)
-    .catch((err) => err);
+  });
+
+  return res;
 };

@@ -1,19 +1,39 @@
 .admin-home {
-  margin-top: 32px;
+  margin-top: 28px;
   .tab-link {
-    margin-left: 32px;
+    margin: 0 32px;
     display: flex;
     flex-direction: row;
+    padding-left: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #333;
   }
 }
 
 .customer-order {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
-  border-top: 1px solid #333;
-  margin: 32px;
-  padding: 32px 8px;
+
+  .url-generated {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 32px 32px 0 32px;
+    background-color: #c4c4c4;
+    border-radius: 6px;
+    .copy-icon {
+      height: 40px;
+      cursor: pointer;
+    }
+  }
+  .order-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 16px;
+  }
   .order-form {
     display: flex;
     justify-content: center;
@@ -31,7 +51,7 @@
         margin-bottom: 8px;
       }
       .input-item {
-        background-color: rgb(149, 151, 151);
+        background-color: #ced2d2;
         border-radius: 8px;
         padding: 12px 8px;
         font-size: 18px;
@@ -129,10 +149,28 @@
   color: #ffffff;
 }
 
+.grey {
+  background-color: #182d18;
+  color: #ffffff;
+}
+
 .link {
   font-weight: 600;
   margin-right: 16px;
   border-radius: 8px;
-  padding: 16px 24px;
+  padding: 14px 24px;
   cursor: pointer;
+}
+
+.copy-text {
+  position: relative;
+  background-color: rgb(68, 170, 253);
+  border-radius: 10px;
+  padding: 8px 8px;
+  left: -50%;
+  top: -57px;
+}
+
+.mt-1 {
+  margin-top: 8px;
 }

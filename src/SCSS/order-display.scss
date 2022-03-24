@@ -1,0 +1,60 @@
+.order-display-conatiner {
+  display: flex;
+  margin: 32px;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 350px;
+  .order-detials {
+    .customer-data {
+      display: flex;
+      margin-top: 16px;
+      flex-direction: row;
+      font-size: 24px;
+      .data-value {
+        margin-left: 16px;
+      }
+    }
+    .small-text {
+      font-size: 16px !important;
+    }
+    .greyed-out {
+      padding: 8px;
+      border-radius: 8px;
+      background-color: #ced2d2;
+    }
+  }
+  .medicen-list {
+    .list-ul {
+      border-radius: 8px;
+      height: 280px;
+      background-color: #ced2d2;
+      overflow-y: auto;
+      width: 350px;
+      padding: 0 8px;
+      .item {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        font-size: 19px;
+        padding: 12px;
+        border-bottom: 1px solid #333;
+        .serial-no {
+          padding: 0 8px;
+        }
+        .med-name {
+          padding: 0 8px;
+          margin: 0 12px;
+        }
+        .med-quantity {
+          padding: 0 8px;
+        }
+      }
+    }
+  }
+}
+.heading {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}

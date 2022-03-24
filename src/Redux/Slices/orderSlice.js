@@ -20,6 +20,60 @@ export const addCustomerOrder = createAsyncThunk(
   }
 );
 
+export const getProductFun = createAsyncThunk(
+  "orderSlice/getProductFun",
+  (data, { dispatch, rejectWithValue, fulfillWithValue }) => {
+    // dispatch(startLoading());
+    return Order.getProductData(data)
+      .then((res) => {
+        // dispatch(stopLoading());
+        if (res.status === 200) {
+          return fulfillWithValue(res.data);
+        }
+      })
+      .catch((err) => {
+        // dispatch(stopLoading());
+        return rejectWithValue(err);
+      });
+  }
+);
+
+export const getProductBydateFilterFun = createAsyncThunk(
+  "orderSlice/getProductByDateFilterFun",
+  (data, { dispatch, fulfillWithValue, rejectWithValue }) => {
+    // dispatch(startLoading());
+    return Order.getProductDataAPI(data)
+      .then((res) => {
+        // dispatch(stopLoading());
+        if (res.status === 200) {
+          return fulfillWithValue(res.data);
+        }
+      })
+      .catch((err) => {
+        // dispatch(stopLoading());
+        return rejectWithValue(err);
+      });
+  }
+);
+
+export const getProductonChangeFun = createAsyncThunk(
+  "orderSlice/getProductByDateFilterFun",
+  (data, { dispatch, fulfillWithValue, rejectWithValue }) => {
+    dispatch(startLoading());
+    return Order.getProductDataAPI(data)
+      .then((res) => {
+        dispatch(stopLoading());
+        if (res.status === 200) {
+          return fulfillWithValue(res.data);
+        }
+      })
+      .catch((err) => {
+        dispatch(stopLoading());
+        return rejectWithValue(err);
+      });
+  }
+);
+
 const orderSlice = createSlice({
   name: "orderSlice",
   initialState: {},
@@ -35,6 +89,27 @@ const orderSlice = createSlice({
       return {
         ...state,
         error: true,
+      };
+    },
+    [getProductFun.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        orderData: action.payload,
+        error: false,
+      };
+    },
+    [getProductBydateFilterFun.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        filteredData: action.payload,
+        error: false,
+      };
+    },
+    [getProductBydateFilterFun.rejected]: (state, action) => {
+      return {
+        ...state,
+        error: true,
+        errorMessage: action.payload,
       };
     },
   },
