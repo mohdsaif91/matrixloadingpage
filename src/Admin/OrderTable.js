@@ -11,6 +11,7 @@ import Eyes from "../assets/admin/eyes-look.png";
 import copy from "../assets/admin/copy-icon.png";
 import ModalPopup from "./ModalPopup";
 import ReactSelect from "react-select";
+import LoadingIndicator from "../Component/LoadingIndicator";
 
 const initialFilter = {
   startDate: moment().startOf("day").toDate(),
@@ -32,8 +33,17 @@ function OrderTable() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const newFilter = filter;
-    newFilter.customerName = filter.customerName.value;
+    if (!filter.customerName) {
+      setFilter({ ...filter, customerName: { label: "", value: "" } });
+    }
+    let newFilter = {};
+    if (filter.customerName && filter.customerName.value !== "") {
+      newFilter.customerName = filter.customerName.value;
+    }
+    newFilter.createdAt = {
+      $gte: filter.startDate,
+      $lte: filter.endDate,
+    };
     dispatch(getProductBydateFilterFun(newFilter));
   }, [filter]);
 
@@ -51,18 +61,23 @@ function OrderTable() {
     }, [3000]);
   };
 
+  const customerOptions = tableData.customerName
+    ? tableData.customerName.map((m) => {
+        return {
+          label: m,
+          value: m,
+        };
+      })
+    : [];
+
   const openModal = (id) => {
     window.scrollTo(0, 0);
     const selectedOrder = tableData.filteredData.find((f) => {
       return f._id === id;
     });
+    console.log(selectedOrder, " found");
     setModal({ ...modal, show: true, data: selectedOrder });
   };
-  const optionCustomer = tableData.filteredData
-    ? tableData.filteredData.map((m) => {
-        return { label: m.customerName, value: m.customerName };
-      })
-    : [];
 
   const columns = useMemo(
     () => [
@@ -96,9 +111,7 @@ function OrderTable() {
               onClick={() => copyUrl(_id)}
               src={copy}
             />
-            {active.show && active.id === _id && (
-              <span className="copy-text"> Copied !</span>
-            )}
+            {active.id === _id && <span className="copy-text"> Copied !</span>}
           </div>
         ),
       },
@@ -148,45 +161,55 @@ function OrderTable() {
             />
           </div>
           <div className="date-picker-container">
-            <label>customer name</label>
+            <label>Customer name</label>
             <ReactSelect
-              options={optionCustomer}
+              defaultValue={{ label: "Customer Name", value: "Customer Name" }}
+              options={customerOptions}
+              className="customer-name"
               value={filter.customerName}
               onChange={(date) => setFilter({ ...filter, customerName: date })}
+              isClearable={true}
             />
           </div>
         </div>
-        <table {...getTableProps()}>
-          <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th
-                    {...column.getHeaderProps({
-                      style: { minWidth: column.minWidth, width: column.width },
-                    })}
-                  >
-                    {column.render("Header")}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map((row, i) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                    );
-                  })}
+        {tableData.loading ? (
+          <LoadingIndicator />
+        ) : (
+          <table {...getTableProps()}>
+            <thead>
+              {headerGroups.map((headerGroup) => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column) => (
+                    <th
+                      {...column.getHeaderProps({
+                        style: {
+                          minWidth: column.minWidth,
+                          width: column.width,
+                        },
+                      })}
+                    >
+                      {column.render("Header")}
+                    </th>
+                  ))}
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()}>
+              {rows.map((row, i) => {
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map((cell) => {
+                      return (
+                        <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
       </div>
       {modal.show && (
         <ModalPopup

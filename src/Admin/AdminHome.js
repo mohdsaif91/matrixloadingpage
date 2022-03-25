@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 
-import { getProductBydateFilterFun } from "../Redux/Slices/orderSlice";
+import {
+  getCustomerName,
+  getProductBydateFilterFun,
+} from "../Redux/Slices/orderSlice";
 import { setTab } from "../Redux/Slices/utilSlice";
 import GenerateOrder from "./GenerateOrder";
 import OrderTable from "./OrderTable";
@@ -10,10 +13,11 @@ import OrderTable from "./OrderTable";
 const initialFilter = {
   startDate: moment().startOf("day").toDate(),
   endDate: moment().endOf("day").toDate(),
+  customerName: "",
 };
 
 function AdminHome() {
-  const [filter, setFilter] = useState({ ...initialFilter });
+  const [filter] = useState({ ...initialFilter });
 
   const tabIndex = useSelector((state) => state.util);
   const tableData = useSelector((state) => state.order);
@@ -21,7 +25,16 @@ function AdminHome() {
 
   useEffect(() => {
     if (!tableData.filteredData) {
-      dispatch(getProductBydateFilterFun(filter));
+      let newFilter = {};
+      newFilter.customerName = "";
+      newFilter.createdAt = {
+        $gte: filter.startDate,
+        $lte: filter.endDate,
+      };
+      dispatch(getProductBydateFilterFun(newFilter));
+    }
+    if (!tableData.customerName) {
+      dispatch(getCustomerName());
     }
   }, [tableData]);
 

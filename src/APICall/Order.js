@@ -28,8 +28,17 @@ const getProductDataAPI = (data) => {
   return apiMethod({ ...apiData });
 };
 
+const getCuetomerName = () => {
+  const apiData = {
+    url: "/order/getCustomerName",
+    method: "get",
+  };
+  return apiMethod({ ...apiData });
+};
+
 export default {
   addCustomerOrder,
+  getCuetomerName,
   getProductData,
   getProductDataAPI,
 };

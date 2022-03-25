@@ -21,6 +21,7 @@ function AdminHeader() {
       </div>
       <div className="logout-div">
         <img
+          alt=""
           onClick={() => logoutUserFun()}
           src={logout}
           className="logout-img"

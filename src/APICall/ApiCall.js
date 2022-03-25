@@ -8,10 +8,15 @@ export const apiMethod = async (payload) => {
     baseURL: url,
   });
 
-  const res = await axios(payload.url, {
-    method: payload.method,
-    data: payload.data,
-  });
+  let res;
+  try {
+    res = await axios(payload.url, {
+      method: payload.method,
+      data: payload.data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 
   return res;
 };

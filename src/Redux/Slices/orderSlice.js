@@ -41,16 +41,31 @@ export const getProductFun = createAsyncThunk(
 export const getProductBydateFilterFun = createAsyncThunk(
   "orderSlice/getProductByDateFilterFun",
   (data, { dispatch, fulfillWithValue, rejectWithValue }) => {
-    // dispatch(startLoading());
+    dispatch(loading(true));
     return Order.getProductDataAPI(data)
       .then((res) => {
-        // dispatch(stopLoading());
+        dispatch(loading(false));
         if (res.status === 200) {
           return fulfillWithValue(res.data);
         }
       })
       .catch((err) => {
-        // dispatch(stopLoading());
+        dispatch(loading(false));
+        return rejectWithValue(err);
+      });
+  }
+);
+
+export const getCustomerName = createAsyncThunk(
+  "orderSlice/getCustomerName",
+  (data, { fulfillWithValue, rejectWithValue }) => {
+    return Order.getCuetomerName()
+      .then((res) => {
+        if (res.status === 200) {
+          return fulfillWithValue(res.data);
+        }
+      })
+      .catch((err) => {
         return rejectWithValue(err);
       });
   }
@@ -77,6 +92,14 @@ export const getProductonChangeFun = createAsyncThunk(
 const orderSlice = createSlice({
   name: "orderSlice",
   initialState: {},
+  reducers: {
+    loading: (state, action) => {
+      return {
+        ...state,
+        loading: action.payload,
+      };
+    },
+  },
   extraReducers: {
     [addCustomerOrder.fulfilled]: (state, action) => {
       return {
@@ -112,8 +135,23 @@ const orderSlice = createSlice({
         errorMessage: action.payload,
       };
     },
+    [getCustomerName.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        error: false,
+        customerName: action.payload,
+      };
+    },
+    [getCustomerName.rejected]: (state, action) => {
+      return {
+        ...state,
+        error: true,
+        errorMessage: action.payload,
+      };
+    },
   },
 });
 
+const { loading } = orderSlice.actions;
 const { reducer } = orderSlice;
 export default reducer;

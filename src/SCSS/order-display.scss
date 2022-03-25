@@ -3,7 +3,6 @@
   margin: 32px;
   flex-direction: row;
   justify-content: space-around;
-  height: 350px;
   .order-detials {
     .customer-data {
       display: flex;
@@ -18,9 +17,11 @@
       font-size: 16px !important;
     }
     .greyed-out {
+      width: 450px;
       padding: 8px;
       border-radius: 8px;
       background-color: #ced2d2;
+      padding-bottom: 32px;
     }
   }
   .medicen-list {
@@ -29,7 +30,7 @@
       height: 280px;
       background-color: #ced2d2;
       overflow-y: auto;
-      width: 350px;
+      width: 400px;
       padding: 0 8px;
       .item {
         display: flex;

@@ -13,7 +13,7 @@ function ShowProduct() {
     if (splitUrl[splitUrl.length - 1] && !order.orderData) {
       dispatch(getProductFun(splitUrl[splitUrl.length - 1]));
     }
-  }, []);
+  }, [dispatch, order]);
 
   const data = order.orderData;
 

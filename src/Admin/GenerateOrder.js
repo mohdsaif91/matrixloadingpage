@@ -101,15 +101,7 @@ function GenerateOrder() {
               }
             />
           </div>
-
-          <div className="form-item changes-conatiner">
-            <label className="input-label">Medicen Name</label>
-            <input
-              className="input-item"
-              name="customerName"
-              value={medicen.name}
-              onChange={(e) => setMedicen({ ...medicen, name: e.target.value })}
-            />
+          <div className="form-item">
             <label className="input-label mt-1">Additional Detials</label>
             <textarea
               rows={5}
@@ -120,6 +112,16 @@ function GenerateOrder() {
                 setOrder({ ...order, aditionalText: e.target.value })
               }
             />
+          </div>
+          <div className="form-item changes-conatiner">
+            <label className="input-label">Medicen Name</label>
+            <input
+              className="input-item"
+              name="customerName"
+              value={medicen.name}
+              onChange={(e) => setMedicen({ ...medicen, name: e.target.value })}
+            />
+
             <div className="medicen-container">
               <div className="operation-container">
                 <button className="link btn" onClick={() => reduceQuantity()}>
@@ -146,9 +148,18 @@ function GenerateOrder() {
                 </button>
               </div>
               <button
-                disabled={medicen.quantity === 0}
+                disabled={
+                  medicen.quantity === 0 ||
+                  medicen.name === "" ||
+                  order.aditionalText === "" ||
+                  order.customerName === ""
+                }
                 className={` add-medicen ${
-                  medicen.quantity === 0 && "disabled"
+                  (medicen.quantity === 0 ||
+                    medicen.name === "" ||
+                    order.aditionalText === "" ||
+                    order.customerName === "") &&
+                  "disabled"
                 }`}
                 onClick={() => addInOrderArray()}
               >
