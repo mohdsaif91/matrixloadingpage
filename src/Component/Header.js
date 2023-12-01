@@ -10,7 +10,7 @@ function Header() {
             <div className="country-text">USA</div>
             <div className="number-container">
               <a href="tel:+18886821109">call +1 888 6821109</a>
-              <a href="tel:+16787223433">text +1 678 7223433</a>
+              <a href="tel:+14342058536">text +1 434 2058536</a>
             </div>
           </div>
           <div className="contact">

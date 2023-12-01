@@ -23,6 +23,21 @@ import vilitra20 from "../assets/vilitra-20.jpeg";
 import vilitra40 from "../assets/vilitra-40.jpeg";
 import vilitra60 from "../assets/vilitra-60.jpeg";
 
+import finest1 from "../assets/finest1.jpg";
+import doxycycline from "../assets/doxycycline.jpg";
+import slimtop from "../assets/slimtop.jpg";
+import zopisign from "../assets/zopisign.jpg";
+import atomext from "../assets/atomext.jpg";
+import moonegil from "../assets/moonegil.jpg";
+import lumigun from "../assets/lumigun.jpg";
+import headen from "../assets/headen.jpg";
+import sildigra from "../assets/sildigra.jpg";
+import anavar from "../assets/anavar.jpg";
+import danabol from "../assets/danabol.jpg";
+import trenbolon from "../assets/trenbolon.jpg";
+import rvblesus from "../assets/rvblesus.jpg";
+import fitaro from "../assets/fitaro.jpg";
+
 export const data = [
   {
     id: 1,
@@ -84,6 +99,32 @@ export const data = [
   { id: 22, name: "Viagra 100 mg", imageName: cenforce100 },
   { id: 23, name: "Viagra 150 mg", imageName: cenforce150 },
   { id: 24, name: "Viagra 200 mg", imageName: cenforce200 },
+  { id: 25, name: "Hairloss propecia Finasteride 1 mg", imageName: finest1 },
+  { id: 26, name: "Antibiotics Doxycycline 100 mg", imageName: doxycycline },
+  { id: 27, name: "Weightloss Xenical 120 mg", imageName: slimtop },
+  {
+    id: 28,
+    name: "Insomnia/sleeping Zopiclone 3.75 to 20 mg",
+    imageName: zopisign,
+  },
+  { id: 29, name: "ADHD  Strattera 10 to 40 mg", imageName: atomext },
+  {
+    id: 30,
+    name: "Wakefulness Provigil Modafinil 100 to 250 MG",
+    imageName: moonegil,
+  },
+  { id: 31, name: "Eyecare Lumigan 0.03% Bimatoprost", imageName: lumigun },
+  { id: 32, name: "HGH SOMATROPIN 4IU", imageName: headen },
+  { id: 33, name: "VIAGRA SILDIGRA 250 MG", imageName: sildigra },
+  {
+    id: 34,
+    name: "ANAVAR 10 MG OXANDROLONE  TABLETS , FOR MUSCLE BUILDING",
+    imageName: anavar,
+  },
+  { id: 35, name: "DANABOL 10 MG FOR MUSCLE BUILDING", imageName: danabol },
+  { id: 36, name: "TRENBOLON 200 MG", imageName: trenbolon },
+  { id: 37, name: "RYBELSUS SEMAGLUTIDE TABLETS", imageName: rvblesus },
+  { id: 38, name: "OZEMPIC SEMAGLUTIDE INJECTIONS", imageName: fitaro },
 ];
 
 export const numberValidation = (value) => {
