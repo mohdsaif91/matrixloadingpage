@@ -8,8 +8,8 @@ function Footer() {
           <div className="contact">
             <div className="country-text">USA</div>
             <div className="number-container">
-              <a href="tel:+18886821109">call +1 888 6821109</a>
-              <a href="tel:+16787223433">text +1 678 7223433</a>
+              <a href="tel:+18883394142">call +1 888 3394142</a>
+              <a href="tel:+17203548844">text +1 720 3548844</a>
             </div>
           </div>
           <div className="contact">
